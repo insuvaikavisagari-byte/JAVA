@@ -1,0 +1,37 @@
+import java.util.*;
+public class Main{
+    public static void main(String[] args){
+        Scanner sc=new Scanner(System.in);
+        int n=sc.nextInt();
+        int a[]=new int[n];
+        for(int i=0;i<n;i++)
+            a[i]=sc.nextInt();
+            Node root=new Node(a[0]);
+            Queue<Node> q=new LinkedList<>();
+            q.offer(root);
+            int i=1;
+            while(i<n){
+                Node t=q.poll();
+                if(a[i]!=-1){
+                    t.left=new Node(a[i]);
+                    q.offer(t.left);
+                }
+                i++;
+                if(i<n&&a[i]!=-1){
+                    t.right=new Node(a[i]);
+                    q.offer(t.right);
+                }
+                i++;
+            }
+    }
+}
+    class Node{
+        int data;
+        Node left;
+        Node right;
+        Node(int data){
+            this.data=data;
+            left=null;
+            right=null;
+      }
+}
